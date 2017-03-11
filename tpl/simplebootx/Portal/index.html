@@ -1,0 +1,707 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{$site_name}</title>
+	<tc_include file="Public:header" />
+	<link href="__TMPL__Public/css/index.css" rel="stylesheet">
+
+</head>
+
+<body>
+<tc_include file="Public:main" />
+
+<div id="wrap" class="french">
+<div id="container">
+    <div class="mask"></div>
+    <div class="french1">
+        <div class="mask"></div>
+        <div class="french1left">
+            <ul class="french1left1">
+                <php>
+                    $Hits=sp_sql_posts("field:post_title,post_excerpt,tid,smeta;order:post_hits asc;limit:1;"); 
+              	</php>
+                <foreach name="Hits" item="Hits">
+                <php>
+                $smeta=json_decode($Hits['smeta'],true);
+                </php>
+                <li>
+                    <a title="{$Hits.post_title}" href="{:u('article/index',array('id'=>$Hits['tid']))}">
+                    	<img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$Hits.post_title}" title="{$Hits.post_title}" >
+                    </a>
+                </li>
+                <li>
+                    <a title="{$Hits.post_title}" href="{:u('article/index',array('id'=>$Hits['tid']))}" class="french1left1t">{$Hits.post_title}</a>
+                </li>
+                <li>
+                    <a title="{$Hits.post_excerpt}" href="{:u('article/index',array('id'=>$Hits['tid']))}" class="french1left1c">{$Hits.post_excerpt}</a>
+                </li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="french1right">
+                <php>
+                    $Date=sp_sql_posts("field:post_title,post_excerpt,tid,smeta;order:post_date desc;limit:2;"); 
+              	</php>
+                <foreach name="Date" item="date">
+                <php>
+                	$smeta=json_decode($date['smeta'],true);
+                </php>
+                    <ul>
+                        <li>
+                            <h3><a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">{$date.post_title}</a></h3>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                            	<img onerror="nofind();" class="zhezhao" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$date.post_title}" title="{$date.post_title}" width="200" height="113">
+                            </a>
+                            <a class="frenchc1" title="{$date.post_excerpt}" href="{:u('article/index',array('id'=>$date['tid']))}">{$date.post_excerpt}</a></a>
+                        </li>
+                    </ul>
+                </foreach>
+        </div>
+        <div class="french1right2">
+            <ol class="french1right2c">
+                <li>
+                <php>
+                    $Hits=sp_sql_posts("field:post_title,tid;order:post_hits asc;limit:3,5;"); 
+              	</php>
+                <foreach name="Hits" item="Hits">
+                   <h6> <a title="{$Hits.post_title}" href="{:u('article/index',array('id'=>$Hits['tid']))}">{$Hits.post_title}</a></h6>
+                </foreach>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="french2">
+        <div class="mask"></div>
+        <div class="french2hd">
+            <div class="line1"></div>
+            <h2><a href="{:u('list/index',array('id'=>110))}" title="Actualités">Actualités</a></h2>
+            <div class="line2"></div>
+        </div>
+        <div id="french2title">
+            <a href="{:u('list/index',array('id'=>111))}" title="Monde">Monde</a>
+            <a href="{:u('list/index',array('id'=>112))}" title="Chine">Chine</a>
+            <a href="{:u('list/index',array('id'=>113))}" title="Asie-Pacifique">Asie-Pacifique</a>
+            <a href="{:u('list/index',array('id'=>114))}" title="Europe">Europe</a>
+            <a href="{:u('list/index',array('id'=>115))}" title="Amériques">Amériques</a>
+            <a href="{:u('list/index',array('id'=>116))}" title="Moyen-Orient">Moyen-Orient</a>
+            <a href="{:u('list/index',array('id'=>117))}" title="Afrique">Afrique</a>
+            <a href="{:u('list/index',array('id'=>118))}" title="Organisations Internationales">Organisations Internationales</a>
+        </div>
+
+        <div id="french2content">
+            <div name="french2">
+                <ul class="french2c1">
+                <php>
+                    $Hits_news=sp_sql_posts("cid:111,112,113,114,115,116,117,118;field:post_title,tid,smeta;order:post_hits asc;limit:3;"); 
+              	</php>
+                <foreach name="Hits_news" item="hits">
+                <php>
+                	$smeta=json_decode($hits['smeta'],true);
+                </php>
+                    <li>
+                        <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                        	<img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$hits.post_title}" title="{$hits.post_title}" >
+                        </a>
+                        <p>{$hits.post_title}</p>
+                    </li>
+                </foreach>
+                
+
+                </ul>
+                <ul class="french2c2">
+                <php>
+                    $Date_news=sp_sql_posts("cid:111,112,113,114,115,116,117,118;field:post_title,tid;order:post_date asc;limit:3;"); 
+              	</php>
+                <foreach name="Date_news" item="date">
+                    <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                        <li>
+                            <span>{$date.post_title}</span>
+                        </li>
+                    </a>
+                </foreach>
+                </ul>
+                <h3>LESPLUS PARTAGES</h3>
+                <ul class="french2c3">
+                <php>
+                    $Date_news=sp_sql_posts("cid:111,112,113,114,115,116,117,118;field:post_title,tid;order:post_date asc;limit:5,5;"); 
+              	</php>
+                <foreach name="Date_news" item="date">
+                    <li><a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                        {$date.post_title}
+                    </a></li>
+                </foreach>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="french3">
+        <div class="mask"></div>
+        <div class="french2hd">
+            <div class="line1"></div>
+            <h2><a href="{:u('list/index',array('id'=>120))}" title="Commerce international">Commerce international</a></h2>
+            <div class="line11"></div>
+        </div>
+        <div id="french2title">
+            <a href="{:u('list/index',array('id'=>121))}" title="Informations">Informations</a>
+            <a href="{:u('list/index',array('id'=>122))}" title="Coopération multilatérale">Coopération multilatérale</a>
+            <a href="{:u('list/index',array('id'=>123))}" title="Entreprises internationales">Entreprises internationales</a>
+            <a href="{:u('list/index',array('id'=>124))}" title="Pratique commérciale">Pratique commérciale</a>
+            <a href="{:u('list/index',array('id'=>125))}" title="Exposition">Exposition</a>
+            <a href="{:u('list/index',array('id'=>126))}" title="Offre d'achat international">Offre d'achat international</a>
+        </div>
+        <div id="french3content">
+            <div name="french3">
+                <div class="french3content1">
+                <ul class="french3c1">
+                
+                <php>
+                    $Hits_maoyi=sp_sql_posts("cid:121,122,123,124,125,126;field:post_title,post_excerpt,tid,smeta;order:post_hits asc;limit:3;"); 
+              	</php>
+                <foreach name="Hits_maoyi" item="hits">
+                <php>
+                	$smeta=json_decode($hits['smeta'],true);
+                </php>
+                    <li>
+                        <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                        <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$hits.post_title}" title="{$hits.post_title}" ></a>
+                        <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}"><h1>{$hits.post_title}</h1></a>
+                        <a title="{$hits.post_excerpt}" href="{:u('article/index',array('id'=>$hits['tid']))}"><p>{$hits.post_excerpt}</p></a>
+                    </li>
+                </foreach>
+                </ul>
+
+                <h3>LESPLUS PARTAGES</h3>
+                <ul class="french3c3">
+                <php>
+                    $Hits_maoyi5=sp_sql_posts("cid:121,122,123,124,125,126;field:post_title,tid;order:post_hits asc;limit:5,5;"); 
+              	</php>
+                <foreach name="Hits_maoyi5" item="hits">
+                    <li><a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                        {$hits.post_title}
+                    </a></li>
+                </foreach>
+
+
+                </ul>
+                </div>
+                <div class="french3content2">
+                 <ul class="french3c1">
+                        <php>
+                            $Date_maoyi=sp_sql_posts("cid:121,122,123,124,125,126;field:post_title,post_excerpt,tid,smeta;order:post_date desc;limit:3;"); 
+                        </php>
+                        <foreach name="Date_maoyi" item="date">
+                        <php>
+                            $smeta=json_decode($date['smeta'],true);
+                        </php>
+                            <li>
+                                <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$date.post_title}" title="{$date.post_title}" ></a>
+                                <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}"><h1>{$date.post_title}</h1></a>
+                                <a title="{$date.post_excerpt}" href="{:u('article/index',array('id'=>$date['tid']))}"><p>{$date.post_excerpt}</p></a>
+                            </li>
+                        </foreach>
+                    </ul>
+
+                    <h3>LESPLUS PARTAGES</h3>
+                    <ul class="french3c3">
+                        <php>
+                            $Date_maoyi5=sp_sql_posts("cid:121,122,123,124,125,126;field:post_title,tid;order:post_date desc;limit:5,5;"); 
+                        </php>
+                        <foreach name="Date_maoyi5" item="date">
+                            <li><a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                {$date.post_title}
+                            </a></li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="french4">
+        <div class="mask"></div>
+        <div class="french2hd">
+            <div class="line1"></div>
+            <h2><a href="{:u('list/index',array('id'=>130))}" title="Investissement international">Investissement international</a></h2>
+            <div class="line4"></div>
+        </div>
+        <div id="french3title">
+            <a href="{:u('list/index',array('id'=>131))}" title="Informations">Informations</a>
+            <a href="{:u('list/index',array('id'=>132))}" title="Fusion et Acquisition">Fusion et Acquisition</a>
+            <a href="{:u('list/index',array('id'=>133))}" title="Financement">Financement</a>
+            <a href="{:u('list/index',array('id'=>134))}" title="Expert">Expert</a>
+            <a href="{:u('list/index',array('id'=>135))}" title="Projet">Projet</a>
+        </div>
+
+        <div id="french4content">
+            <div name="french4">
+                <div class="french4content1">
+                        <php>
+                            $Hits_touzi=sp_sql_posts("cid:131,132,133,134,135;field:post_title,post_excerpt,tid,smeta;order:post_hits asc;limit:4;"); 
+                        </php>
+                        <foreach name="Hits_touzi" item="hits">
+                        <php>
+                            $smeta=json_decode($hits['smeta'],true);
+                        </php>
+                            <ul>
+                                <li>
+                                    <h3><a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">{$hits.post_title}</a></h3>
+                                        <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                                        <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$hits.post_title}" title="{$hits.post_title}" height="113" width="200"></a>
+                                    <a title="{$hits.post_excerpt}" href="{:u('article/index',array('id'=>$hits['tid']))}" class="frenchc1">{$hits.post_excerpt}</a>
+                                </li>
+                            </ul>
+                        </foreach>
+                </div>
+
+                    <h2>LESPLUS PARTAGES</h2>
+                    <ul class="french3c3">
+                        <php>
+                            $Date_touzi=sp_sql_posts("cid:131,132,133,134,135;field:post_title,tid;order:post_date desc;limit:6;"); 
+                        </php>
+                        <foreach name="Date_touzi" item="date">
+                            <li><a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                {$date.post_title}
+                            </a></li>
+                        </foreach>
+                    </ul>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="french5">
+        <div class="mask"></div>
+        <div class="french2hd">
+            <div class="line1"></div>
+            <h2><a href="{:u('list/index',array('id'=>140))}" title="Sci-Tech">Sci-Tech</a></h2>
+            <div class="line3"></div>
+        </div>
+        <div id="french2title">
+            <a href="{:u('list/index',array('id'=>141))}" title="Sci-Tech">Sci-Tech</a>
+            <a href="{:u('list/index',array('id'=>142))}" title="IT et Web">IT et Web</a>
+            <a href="{:u('list/index',array('id'=>143))}" title="Espace">Espace</a>
+            <a href="{:u('list/index',array('id'=>144))}" title="Ecologique">Ecologique</a>
+        </div>
+
+        <div id="french5content">
+            <div name="french5" class="block">
+                <div class="french3content4">
+                    <div class="row2-arab-b_frbox">
+                        <div class="row2-arab-frul">
+                            <ul id="row2-arab-frul">
+                        <php>
+                            $Hits_keji=sp_sql_posts("cid:141,142,143,144;field:post_title,tid,smeta;order:post_hits asc;limit:3;"); 
+                        </php>
+                        <foreach name="Hits_keji" item="hits">
+                        <php>
+                            $smeta=json_decode($hits['smeta'],true);
+                        </php>
+                                <li class="ffff">
+                                    <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                                        <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$hits.post_title}" title="{$hits.post_title}" height="113" width="200"></a>
+                                    <div class="row2-arab-zhe">
+                                        <div class="row2-arab-hover">
+                                            <div class="row2-arab-zhe_p">
+                                                <h4><a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">{$hits.post_title}</a></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                        </foreach>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <h3>LESPLUS PARTAGES</h3>
+                <ul class="french5c3">
+                        <php>
+                            $Date_touzi=sp_sql_posts("cid:141,142,143,144;field:post_title,tid;order:post_date desc;limit:4,8;"); 
+                        </php>
+                        <foreach name="Date_touzi" item="date">
+                            <li><a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                {$date.post_title}
+                            </a></li>
+                        </foreach>
+                </ul>
+                <div class="french3content2">
+                    <ul class="french3c1">
+                        <php>
+                            $Dete_keji=sp_sql_posts("cid:141,142,143,144;field:post_title,post_excerpt,tid,smeta;order:post_date desc;limit:3;"); 
+                        </php>
+                        <foreach name="Dete_keji" item="date">
+                        <php>
+                            $smeta=json_decode($date['smeta'],true);
+                        </php>
+   
+                        <li>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                        <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$date.post_title}" title="{$date.post_title}" height="113" width="200"></a>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}"><h1>{$date.post_title}</h1></a>
+                            <a title="{$date.post_excerpt}" href="{:u('article/index',array('id'=>$date['tid']))}"><p>{$date.post_excerpt}</p></a>
+                        </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="french2">
+        <div class="mask"></div>
+        <div class="french2hd">
+            <div class="line1"></div>
+            <h2><a href="{:u('list/index',array('id'=>150))}" title="Tourisme">Tourisme</a></h2>
+            <div class="line2"></div>
+        </div>
+        <div id="french2title">
+            <a href="{:u('list/index',array('id'=>151))}" title="Sites touristiques">Sites touristiques</a>
+            <a href="{:u('list/index',array('id'=>152))}" title="Paysage">Paysage</a>
+            <a href="{:u('list/index',array('id'=>153))}" title="Cuisine">Cuisine</a>
+            <a href="{:u('list/index',array('id'=>154))}" title="Coutume">Coutume</a>
+            <a href="{:u('list/index',array('id'=>155))}" title="Guide">Guide</a>
+        </div>
+        <div id="french6content">
+            <div name="french6">
+                <ul class="french2c1">
+                        <php>
+                            $Hits_lvyou=sp_sql_posts("cid:151,152,153,154,155;field:post_title,tid,smeta;order:post_hits asc;limit:3;"); 
+                        </php>
+                        <foreach name="Hits_lvyou" item="hits">
+                        <php>
+                            $smeta=json_decode($hits['smeta'],true);
+                        </php>
+                            <li>
+                                <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                                                <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$hits.post_title}" title="{$hits.post_title}" height="113" width="200"></a>
+                                <p>{$hits.post_title}</p>
+                            </li>
+                        </foreach>
+                </ul>
+                <ul class="french2c2">
+                        <php>
+                            $Date_lvyou=sp_sql_posts("cid:151,152,153,154,155;field:post_title,post_excerpt,tid;order:post_date desc;limit:3;"); 
+                        </php>
+                        <foreach name="Date_lvyou" item="date">
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                <li>
+                                    <span>{$date.post_excerpt}</span>
+                                </li>
+                            </a>
+                        </foreach>
+                </ul>
+                <h3>LESPLUS PARTAGES</h3>
+                <ul class="french2c3">
+                        <php>
+                            $Date_lvyou5=sp_sql_posts("cid:151,152,153,154,155;field:post_title,post_excerpt,tid;order:post_date desc;limit:4,5;"); 
+                        </php>
+                        <foreach name="Date_lvyou5" item="date">
+                        <li>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">{$date.post_excerpt}</a>
+                        </li>
+                        </foreach>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="french7">
+        <div class="mask"></div>
+        <div class="french2hd">
+            <div class="line1"></div>
+            <h2><a href="{:u('list/index',array('id'=>160))}" title="Culture">Culture</a></h2>
+            <div class="line7"></div>
+        </div>
+        <div id="french2title">
+            <a href="{:u('list/index',array('id'=>161))}" title="Littérature">Littérature</a>
+            <a href="{:u('list/index',array('id'=>162))}" title="Art">Art</a>
+            <a href="{:u('list/index',array('id'=>163))}" title="Musique Classique">Musique Classique</a>
+            <a href="{:u('list/index',array('id'=>164))}" title="Santé">Santé</a>
+            <a href="{:u('list/index',array('id'=>165))}" title="Education">Education</a>
+        </div>
+
+        <div id="french7content">
+            <div name="french7">
+                <ul class="french2c1">
+                        <php>
+                            $Hits_wenhua=sp_sql_posts("cid:161,162,163,164,165;field:post_title,tid,smeta;order:post_hits asc;limit:4;"); 
+                        </php>
+                        <foreach name="Hits_wenhua" item="hits">
+                        <php>
+                            $smeta=json_decode($hits['smeta'],true);
+                        </php>
+                            <li>
+                                <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                                    <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$hits.post_title}" title="{$hits.post_title}" height="113" width="200">
+                                </a>
+                                <p>{$hits.post_title}</p>
+                            </li>
+                        </foreach>
+                </ul>
+                <ul class="french2c2">
+                        <php>
+                            $Date_lvyou=sp_sql_posts("cid:161,162,163,164,165;field:post_title,post_excerpt,tid;order:post_date desc;limit:3;"); 
+                        </php>
+                        <foreach name="Date_lvyou" item="date">
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                <li>
+                                    <span>{$date.post_excerpt}</span>
+                                </li>
+                            </a>
+                        </foreach>
+                </ul>
+
+                <h3>LESPLUS PARTAGES</h3>
+                <ul class="french2c3">
+                        <php>
+                            $Date_lvyou7=sp_sql_posts("cid:161,162,163,164,165;field:post_title,post_excerpt,tid;order:post_date desc;limit:4,8;"); 
+                        </php>
+                        <foreach name="Date_lvyou7" item="date">
+                            <li>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                    {$date.post_excerpt}
+                            </a>
+                            </li>
+                        </foreach>
+                </ul>
+
+                <ul class="french7c">
+                        <php>
+                            $Hits_lvyou=sp_sql_posts("cid:161,162,163,164,165;field:post_title,post_excerpt,tid;order:post_hits asc;limit:2;"); 
+                        </php>
+                        <foreach name="Hits_lvyou" item="hits">
+                            <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                                <li>
+                                    <span>{$hits.post_excerpt}</span>
+                                </li>
+                            </a>
+                        </foreach>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="french3">
+        <div class="mask"></div>
+        <div class="french2hd">
+            <div class="line1"></div>
+            <h2><a href="{:u('list/index',array('id'=>170))}" title="Interviews">Interviews</a></h2>
+            <div class="line6"></div>
+        </div>
+        <div id="french2title">
+            <a href="{:u('list/index',array('id'=>171))}" title="Exclusif">Exclusif</a>
+            <a href="{:u('list/index',array('id'=>172))}" title="Politicien">Politicien</a>
+            <a href="{:u('list/index',array('id'=>173))}" title="Economiste">Economiste</a>
+            <a href="{:u('list/index',array('id'=>174))}" title="Entrepreneur">Entrepreneur</a>
+            <a href="{:u('list/index',array('id'=>175))}" title="Scientifique">Scientifique</a>
+            <a href="{:u('list/index',array('id'=>176))}" title="Artiste">Artiste</a>
+        </div>
+
+        <div id="french8content">
+            <div name="french8">
+                <div class="french3content1">
+                    <ul class="french3c1">
+                    
+                        <php>
+                            $Hits_fangtan=sp_sql_posts("cid:171,172,173,174,175,176;field:post_title,post_excerpt,tid,smeta;order:post_hits asc;limit:3;"); 
+                        </php>
+                        <foreach name="Hits_fangtan" item="hits">
+                        <php>
+                            $smeta=json_decode($hits['smeta'],true);
+                        </php>
+                        <li>
+                            <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                                    <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$hits.post_title}" title="{$hits.post_title}" height="113" width="200">
+                                </a>
+                            <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}"><h1>{$hits.post_title}</h1></a>
+                            <a title="{$hits.post_excerpt}" href="{:u('article/index',array('id'=>$hits['tid']))}"><p>{$hits.post_excerpt}</p></a>
+                        </li>
+                        </foreach>
+
+                    </ul>
+
+                    <h3>LESPLUS PARTAGES</h3>
+                    <ul class="french3c3">
+
+                        <php>
+                            $Hits_fangtan=sp_sql_posts("cid:171,172,173,174,175,176;field:post_title,post_excerpt,tid;order:post_hits asc;limit:4,5;"); 
+                        </php>
+                        <foreach name="Hits_fangtan" item="hits">
+                                <li>
+                            <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                                    {$hits.post_excerpt}
+                            </a>
+                                </li>
+                        </foreach>
+
+
+                    </ul>
+                </div>
+                <div class="french3content2">
+                    <ul class="french3c1">
+                        <php>
+                            $Date_fangtan=sp_sql_posts("cid:171,172,173,174,175,176;field:post_title,post_excerpt,tid,smeta;order:post_date desc;limit:3;"); 
+                        </php>
+                        <foreach name="Date_fangtan" item="date">
+                        <php>
+                            $smeta=json_decode($date['smeta'],true);
+                        </php>
+                        <li>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                    <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$date.post_title}" title="{$date.post_title}" height="113" width="200">
+                                </a>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}"><h1>{$date.post_title}</h1></a>
+                            <a title="{$date.post_excerpt}" href="{:u('article/index',array('id'=>$date['tid']))}"><p>{$date.post_excerpt}</p></a>
+                        </li>
+                        </foreach>
+                    </ul>
+
+                    <h3>LESPLUS PARTAGES</h3>
+                    <ul class="french3c3">
+                        <php>
+                            $Date_fangtan=sp_sql_posts("cid:171,172,173,174,175,176;field:post_title,post_excerpt,tid;order:post_date desc;limit:5,5;"); 
+                        </php>
+                        <foreach name="Date_fangtan" item="date">
+                                <li>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                    {$date.post_excerpt}
+                            </a>
+                                </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="french4">
+        <div class="mask"></div>
+        <div class="french2hd">
+            <div class="line1"></div>
+            <h2><a href="{:u('list/index',array('id'=>180))}" title="Business Guide">Business Guide</a></h2>
+            <div class="line9"></div>
+        </div>
+        <div id="french3title">
+            <a href="{:u('list/index',array('id'=>181))}" title="Politique">Politique</a>
+            <a href="{:u('list/index',array('id'=>182))}" title="Aperçu">Aperçu</a>
+            <a href="{:u('list/index',array('id'=>183))}" title="Visa">Visa</a>
+            <a href="{:u('list/index',array('id'=>184))}" title="Coutume">Coutume</a>
+            <a href="{:u('list/index',array('id'=>185))}" title="Négociation">Négociation</a>
+        </div>
+
+        <div id="french9content">
+            <div name="french9">
+                <div class="french4content1">
+                        <php>
+                            $Hits_zhinan=sp_sql_posts("cid:181,182,183,184,185;field:post_title,post_excerpt,tid,smeta;order:post_hits asc;limit:4;"); 
+                        </php>
+                        <foreach name="Hits_zhinan" item="hits">
+                        <php>
+                            $smeta=json_decode($hits['smeta'],true);
+                        </php>
+                    <ul>
+                        <li>
+                            <h3><a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">{$hits.post_title}</a></h3>
+                            <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                                    <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$hits.post_title}" title="{$hits.post_title}" height="113" width="200">
+                            </a>
+                            <a class="frenchc1" title="{$hits.post_excerpt}" href="{:u('article/index',array('id'=>$hits['tid']))}">{$hits.post_excerpt}</a>
+                        </li>
+                    </ul>
+                        </foreach>
+                </div>
+
+                <h2>LESPLUS PARTAGES</h2>
+                <ul class="french3c3">
+                        <php>
+                            $Date_zhinan=sp_sql_posts("cid:181,182,183,184,185;field:post_title,tid;order:post_date desc;limit:5,7;"); 
+                        </php>
+                        <foreach name="Date_zhinan" item="date">
+                                <li>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                    {$date.post_title}
+                            </a>
+                                </li>
+                        </foreach>
+                </ul>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="french2">
+        <div class="mask"></div>
+        <div class="french2hd">
+            <div class="line1"></div>
+            <h2><a href="{:u('list/index',array('id'=>190))}" title="Opportunités">Opportunités</a></h2>
+            <div class="line10"></div>
+        </div>
+        <div id="french2title">
+            <a href="{:u('list/index',array('id'=>191))}" title="Offre de vente">Offre de vente</a>
+            <a href="{:u('list/index',array('id'=>192))}" title="Offre d'achat">Offre d'achat</a>
+            <a href="{:u('list/index',array('id'=>193))}" title="Appel d'offre">Appel d'offre</a>
+            <a href="{:u('list/index',array('id'=>194))}" title="Agent">Agent</a>
+        </div>
+        <div id="french10content">
+            <div name="french10">
+                <ul class="french2c1">
+                        <php>
+                            $Hits_shangji=sp_sql_posts("cid:191,192,193,194;field:post_title,post_excerpt,tid,smeta;order:post_hits asc;limit:3;"); 
+                        </php>
+                        <foreach name="Hits_shangji" item="hits">
+                        <php>
+                            $smeta=json_decode($hits['smeta'],true);
+                        </php>
+                            <li>
+                                <a title="{$hits.post_title}" href="{:u('article/index',array('id'=>$hits['tid']))}">
+                                    <img onerror="nofind();" src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$hits.post_title}" title="{$hits.post_title}" height="113" width="200">
+                                </a>
+                                <p>{$hits.post_title}</p>
+                            </li>
+                        </foreach>
+                </ul>
+                <ul class="french2c2">
+                        <php>
+                            $Date_shangji=sp_sql_posts("cid:191,192,193,194;field:post_title,post_excerpt,tid;order:post_date desc;limit:3;"); 
+                        </php>
+                        <foreach name="Date_shangji" item="date">
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                <li>
+                                    <span>{$date.post_excerpt}</span>
+                                </li>
+                            </a>
+                        </foreach>
+                </ul>
+                <h3>LESPLUS PARTAGES</h3>
+                <ul class="french2c3">
+
+                        <php>
+                            $Date_shangji=sp_sql_posts("cid:191,192,193,194;field:post_title,post_excerpt,tid;order:post_date desc;limit:5,5;"); 
+                        </php>
+                        <foreach name="Date_shangji" item="date">
+                                <li>
+                            <a title="{$date.post_title}" href="{:u('article/index',array('id'=>$date['tid']))}">
+                                    {$date.post_excerpt}
+                            </a>
+                                </li>
+                        </foreach>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<tc_include file="Public:links" />
+<tc_include file="Public:footer" />
+<tc_include file="Public:scripts" />
+
+</body>
+
+</html>
+

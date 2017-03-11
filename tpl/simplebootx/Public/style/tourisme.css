@@ -1,0 +1,88 @@
+/*本网站由web前端开发者(薛洪刚)开发;IT昵称(小贱);QQ(1399395438)*/
+@charset "utf-8";
+/*全局样式*/
+*{margin:0; padding:0;}
+body{font-size:12px; font-family:Lucida Console;}
+/*重置默认样式*/
+h1,h2,h3,p,ul,li,img{margin:0; padding:0; list-style:none; border:0;}
+/*公共样式*/
+a:link{color:#000; text-decoration:none;}
+a:hover{color:#ff0000;text-decoration:underline;}
+a:visited{color:#000; text-decoration:none;}
+.wrapper{width:960px; margin:0 auto; overflow:hidden;}
+/*navbg start*/
+#navbg{height:55px;border-top:#e0f2fc 2px solid; border-bottom:#e0f2fc 5px solid; 
+	margin:5px auto; overflow:hidden;}
+#navbg ul{width:960px; height:55px; margin:0 auto; overflow:hidden;}
+#navbg ul li{float:left; width:160px; height:55px; text-align:center;line-height:55px;
+	font-size:16px;}
+#navtwobg{background:#f8fafb;height:40px;margin:0 auto; overflow:hidden;
+ border-top:#ccdce4 1px solid; border-bottom:#ccdce4 1px solid; }
+#navtwobg ul{width:960px; height:40px;margin:0 auto; overflow:hidden;}
+#navtwobg ul li{float:left; width:160px; line-height:40px; text-align:center;}
+
+/*content start*/
+#contentbg{ width:960px;  margin:5px auto; overflow:hidden;}
+#contentbg ul{width:308px; height:267px; border:#dae5eb 2px solid; float:left; margin:0px 4px;}
+#contentbg ul div{background:#f5f8fa;width:308px;height:40px; border-bottom:#dae5eb 2px solid;
+ line-height:40px; text-align:center; }
+#contentbg ul li{width: 308px;padding: 10px 0;height: 32px;overflow: hidden;}
+
+/*graphicbg start*/
+#graphicbg{ width:960px; height:490px; border-top:#ecf0f5 9px solid;	border-bottom:#ecf0f5 9px solid;margin:0 auto; overflow:hidden;}
+.leftgpicbg{background:#d9e5eb;border:#dee8ee 1px solid;width:186px; height:245px;float:left; margin:18px;}
+.leftgpicbg ul div{height:30px; width:186px; line-height:30px; text-align:center; text-overflow:ellipsis;}
+.leftgpicbg ul li{line-height:30px; padding-left:5px;}
+.middlegpicbg{background:#ebf0f5; width:400px; height:249px;float:left; margin:18px 0px;border-bottom:#ccdce4 1px solid;}
+.middlegpicbg ul div{width:400px; height:30px;  text-overflow:ellipsis; 
+	text-align:center; line-height:30px;}
+.middlegpicbg ul li{width:400px; height:50px;  text-overflow:ellipsis;}
+#rightgpicbg{border:#ebf0f5 1px solid; width:300px; height:249px; float:left;margin:18px 0px 0px 18px;}
+#rightgpicbg ul div{text-align:center; width:300px; height:30px; border-bottom:#ebf0f5 1px solid; line-height:30px;}
+#rightgpicbg ul span{padding-left:15px; width:273px; height:161px;}
+#rightgpicbg ul li{background:#ebf0f5;width:300px; height:55px;  text-overflow:ellipsis;}
+
+#newspicturebg{float:left;width:960px; height:245px;}
+#newspicturebg ul {width:225px; height:245px; float:left; margin-left:13px;}
+#newspicturebg ul div{background:#ebf0f5; width:225px; height:60px; text-overflow:ellipsis;}
+
+#newsbg{ width:960px; margin:0 auto; overflow:hidden; margin-top:5px; height:540px;}
+.subnavbg{background:url(../img/sidenavbg.jpg) no-repeat;width:960px; height:30px;}
+.subnavbg ul li{text-align:center; line-height:30px;}
+.subnavbg a:link{color:#fff; text-decoration:none;}
+.subnavbg a:hover{color:#ff0000;text-decoration:underline;}
+.subnavbg a:visited{color:#000; text-decoration:none;}
+.sixgpicbg{ width:960px;}
+.sixgpicbg ul{width: 300px;height: 253px;float: left;margin-left: 15px;border: #ccdce4 1px solid;margin-top: 10px;overflow: hidden;}
+.sixgpicbg ul div{background:#F5F8FA;text-align:center; width:300px; height:30px;line-height:30px; border-bottom:#ccdce4 1px solid;}
+.sixgpicbg ul li{width:300px; height:85px; text-overflow:ellipsis; padding-top:5px;}
+
+/*member start*/
+#memberbg{background:#F5F8FA; width:960px; height:250px; margin:0 auto; overflow:hidden; margin-top:10px; }
+.memberlistbg{ width:960px; height:120px;}
+.guoqibg{ width:200px; float:left; margin-left:32px;}
+.guoqibg ul{width:200px; height:50px; padding-top:10px;}
+.guoqibg ul div{width:50px; height:50px; float:left;}
+.guoqibg ul li{width:150px; height:48px;overflow: hidden;  float:left;}
+
+/*tag start*/
+#con {font-size: 12px; margin: 0px auto; width:960px; margin-top: 10px;}
+#tags {padding-right: 0px; padding-left: 0px; padding-bottom: 0px; width: 960px; padding-top: 0px; height: 145px;}
+#tags li {background: url(../img/tagleft.gif) no-repeat left bottom; float: left; list-style-type:none; height: 145px;width:160px;}
+#tags li a {background: url(../img/tagright.gif) no-repeat right bottom; float: left; padding-bottom: 0px; color: #999;padding-top: 0px;
+ height: 145px;width:160px;text-decoration: none;}
+.biaotibg{width:160px; height:27px; font-size:15px; text-align:center;overflow: hidden;margin-top: 5px}
+.taggpic{margin-left:30px; margin-top:10px;}
+#tags li.emptyTag {background: none transparent scroll repeat 0% 0%; width: 4px;}
+#tags li.selecttag {background-position: left top; position: relative; height: 25px;}
+#tags li.selecttag a {background-position: right top; color: #000;  height: 145px; width:160px;}
+#tagcontent {border-top: #aecbd4 1px solid;}
+.tagcontent {display: none; background:#F5F8FA;width:960px;height:240px; color: #474747; margin:0 auto; overflow:hidden;}
+.tagcont div{float:left; width:350px; height:230px;padding-top:10px;overflow:hidden;}
+.tagcont li{ wdith:610px; height:230px;  padding-top:10px;overflow:hidden; font-size:14px;}
+#tagcontent div.selecttag {display: block;}
+
+/*footer start*/
+#footerbg{background:#c8d8e9;  height:120px; overflow:f5f8fa; margin-top:10px;}
+.wrapper ul{width:160px; height: 120px; float:left; margin-left:30px;}
+.wrapper ul li{line-height:30px;}
